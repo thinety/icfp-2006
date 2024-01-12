@@ -2,6 +2,9 @@
 
 use std::io::{Read, Write};
 
+use serde::{Deserialize, Serialize};
+
+#[derive(Serialize, Deserialize)]
 pub struct UniversalMachine {
     register: [u32; 8],
     array: Vec<Option<Vec<u32>>>,
@@ -130,10 +133,24 @@ impl UniversalMachine {
 
                     assert!(output.flush().is_ok());
 
-                    let mut v = 0;
-                    let v = match input.read_exact(std::slice::from_mut(&mut v)) {
-                        Ok(()) => u32::from(v),
-                        Err(_) => u32::MAX,
+                    let v = loop {
+                        let mut v = 0;
+                        match input.read_exact(std::slice::from_mut(&mut v)) {
+                            Ok(()) => match v {
+                                b'' => {
+                                    let state = bincode::serialize(&self).unwrap();
+                                    std::fs::write("um.snapshot", state).unwrap();
+                                }
+                                b'' => {
+                                    let state = std::fs::read("um.snapshot").unwrap();
+                                    self = bincode::deserialize(&state).unwrap();
+                                }
+                                _ => break u32::from(v),
+                            },
+                            Err(_) => {
+                                break u32::MAX;
+                            }
+                        }
                     };
 
                     self.register[c] = v;
