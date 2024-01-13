@@ -1,0 +1,37 @@
+{ a+0 = a }
+Add a Z => a;
+
+{ a+(b+1) = (a+b)+1 }
+Add a (S b) => S (Add a b);
+
+{ a+(b+c) = (a+b)+c }
+{ addition is associative }
+Add a (Add b c) => Add (Add a b) c;
+
+{ please dont ask }
+Add a (Mult b Z) => Add a Z;
+Add a (Mult b (S c)) => Add a (Add (Mult b c) b);
+Add a (Mult b (Add c d)) => Add a (Add (Mult b c) (Mult b d));
+Add a (Mult b (Mult c d)) => Add a (Mult (Mult b c) d);
+
+
+{ a*0 = 0 }
+Mult a Z => Z;
+
+{ a*(b+1) = a*b+a }
+Mult a (S b) => Add (Mult a b) a;
+
+{ a*(b+c) = a*b+a*c }
+{ multiplication distributes over addition }
+Mult a (Add b c) => Add (Mult a b) (Mult a c);
+
+{ a*(b*c) = (a*b)*c }
+{ multiplication is associative }
+Mult a (Mult b c) => Mult (Mult a b) c;
+
+
+{ when all other computation is done }
+Compute x => x;
+
+{ end of rules }
+.
