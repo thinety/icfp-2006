@@ -1,3 +1,5 @@
+rm puzzle1-sol.ant
+/bin/umodem puzzle1-sol.ant EOF
 Puzzle 1: Simple
 NNNNNNN
 NNNWENN
@@ -10,3 +12,5 @@ NNNWENN
  - - - -0v - - -
  -1^ - -0^ - - -
  - - - - - - - -
+EOF
+./antomaton -s puzzle1-sol.ant

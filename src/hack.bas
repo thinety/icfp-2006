@@ -1,3 +1,5 @@
+rm hack.bas
+/bin/umodem hack.bas EOF
 V        IF ARGS() > I THEN GOTO XX
 X        PRINT "usage: ./hack.exe username" + CHR(X)
 XV       END
@@ -84,3 +86,13 @@ CDXV     END
 CDXX     PRINT "found match!! for user " + username + CHR(X)
 CDXXV    PRINT "password: " + pass + CHR(X)
 CDXXX    END
+EOF
+/bin/qbasic hack.bas
+./hack.exe ftd
+./hack.exe knr
+./hack.exe gardener
+./hack.exe ohmega
+./hack.exe yang
+./hack.exe howie
+./hack.exe hmonk
+./hack.exe bbarker

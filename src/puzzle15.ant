@@ -1,3 +1,5 @@
+rm puzzle15-sol.ant
+/bin/umodem puzzle15-sol.ant EOF
 Puzzle 15: You are in a maze of twisty passages, all alike
 WNNNNNN
 64 64
@@ -65,3 +67,5 @@ WNNNNNN
  - - - # - - - # - # # # # # # # # # # # - - - - # - # - # - # - # - - # - # - - # - # - # - # - # - - # - # - # - # # # # # - -
  # # - # - # - # - # - - - # - - - # - # # # # # # - # - # - # - # # # # - # # # # - # - # - # - # # # # - # - # - - - # - - - #
 0> - - # - # - - - # - # - - - # - - - - - - - - - - # - - - # - - - - - - - - - - - # - - - # - - - - - - # - # - # - - - # - -
+EOF
+./antomaton -s puzzle15-sol.ant

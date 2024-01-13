@@ -1,3 +1,5 @@
+rm arith.adv
+/bin/umodem arith.adv EOF
 AddNum a Z => a;
 AddNum a (S b) => S (AddNum a b);
 
@@ -18,5 +20,6 @@ Mult a (Done b) => Done (MultNum a b);
 
 Done a => a;
 
-{ end of rules }
-.
+. { end of rules }
+EOF
+./advise arith arith.adv
