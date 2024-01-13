@@ -6,7 +6,15 @@ basic-hack:
         | cargo run --release data/codex.um
 
 advise-arith:
-    cat <(echo -en 'hmonk\nCOMEFROM\nrm arith.adv\n/bin/umodem arith.adv EOF\n') src/arith.adv <(echo -en 'EOF./advise arith arith.adv\n') \
+    cat <(echo -en 'hmonk\nCOMEFROM\n/bin/umodem solution EOF\n') src/arith.adv <(echo -en 'EOF./advise arith solution\n') \
+        | cargo run --release data/codex.um
+
+antomata-1:
+    cat <(echo -en 'gardener\nmathemantica\n\n/bin/umodem solution EOF\n') src/puzzle1.ant <(echo -en 'EOF./antomaton -s solution\n') \
+        | cargo run --release data/codex.um
+
+antomata-15:
+    cat <(echo -en 'gardener\nmathemantica\n\n/bin/umodem solution EOF\n') src/puzzle15.ant <(echo -en 'EOF./antomaton -s solution\n') \
         | cargo run --release data/codex.um
 
 decompress:
